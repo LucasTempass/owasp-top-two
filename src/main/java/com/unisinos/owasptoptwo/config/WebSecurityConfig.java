@@ -25,6 +25,7 @@ public class WebSecurityConfig {
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
+		// CWE-311: Missing Encryption of Sensitive Data
 		return NoOpPasswordEncoder.getInstance();
 	}
 
