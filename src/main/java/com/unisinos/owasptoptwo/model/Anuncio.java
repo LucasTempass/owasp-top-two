@@ -10,6 +10,7 @@ import lombok.Setter;
 public class Anuncio {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@Column(name = "titulo", nullable = false, length = 128)

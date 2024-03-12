@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,7 +13,8 @@ import java.util.List;
 public class Usuario {
 
 	@Id
-	private String id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
 	@Column(name = "nome", nullable = false, length = 128)
 	private String nome;
@@ -24,6 +26,6 @@ public class Usuario {
 	private String senha;
 
 	@OneToMany(mappedBy = "dono", orphanRemoval = true, fetch = FetchType.LAZY)
-	private List<Anuncio> anuncios;
+	private List<Anuncio> anuncios = new ArrayList<>();
 
 }
