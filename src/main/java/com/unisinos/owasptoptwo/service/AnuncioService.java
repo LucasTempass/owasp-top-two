@@ -14,10 +14,6 @@ public class AnuncioService {
 
 	private final AnuncioRepository anuncioRepository;
 
-	public List<Anuncio> findAllByTitle(String title) {
-		return anuncioRepository.findAllByTitulo(title);
-	}
-
 	public Optional<Anuncio> findById(Integer id) {
 		return anuncioRepository.findById(id);
 	}

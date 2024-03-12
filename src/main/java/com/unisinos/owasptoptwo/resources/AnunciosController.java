@@ -7,18 +7,11 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
-
 @RequiredArgsConstructor
 @RequestMapping("/anuncios")
 public class AnunciosController {
 
 	private final AnuncioService anuncioService;
-
-	@GetMapping
-	public List<Anuncio> getAnunciosByTitulo(@RequestParam String title) {
-		return anuncioService.findAllByTitle(title);
-	}
 
 	@GetMapping("/{id}")
 	public Anuncio getAnuncio(@PathVariable Integer id) {
