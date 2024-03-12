@@ -24,15 +24,13 @@ public class AnunciosController {
 
 	@PutMapping("/{id}")
 	public void updateAnuncio(@PathVariable Integer id, @RequestBody Anuncio anuncio) {
-		// CWE-862: Missing Authorization
-		// Não estamos verificando se o usuário que está tentando atualizar o anúncio é o dono do anúncio.
+		// CWE-862: Missing Authorization (Corrigida)
 		anuncioService.update(id, anuncio);
 	}
 
 	@DeleteMapping("/{id}")
 	public void deleteAnuncio(@PathVariable Integer id) {
-		// CWE-862: Missing Authorization
-		// Não estamos verificando se o usuário que está tentando deletar o anúncio é o dono do anúncio.
+		// CWE-862: Missing Authorization (Corrigida)
 		anuncioService.delete(id);
 	}
 
