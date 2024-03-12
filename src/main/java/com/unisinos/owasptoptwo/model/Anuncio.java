@@ -22,4 +22,7 @@ public class Anuncio {
 	@JoinColumn(name = "dono_id", nullable = false)
 	private Usuario dono;
 
+	@Column(name = "is_ativo", nullable = false)
+	private boolean ativo;
+
 }
