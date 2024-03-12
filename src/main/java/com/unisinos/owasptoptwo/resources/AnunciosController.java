@@ -1,5 +1,6 @@
 package com.unisinos.owasptoptwo.resources;
 
+import com.unisinos.owasptoptwo.dto.AnuncioDetails;
 import com.unisinos.owasptoptwo.model.Anuncio;
 import com.unisinos.owasptoptwo.service.AnuncioService;
 import lombok.RequiredArgsConstructor;
@@ -13,10 +14,12 @@ public class AnunciosController {
 	private final AnuncioService anuncioService;
 
 	@GetMapping("/{id}")
-	public Anuncio getAnuncio(@PathVariable Integer id) {
-		// CWE-200: Exposure of Sensitive Information to an Unauthorized Actor
-		// Ao retornar a Entidade Anuncio diretamente, estamos expondo informações sensíveis sobre o anúncio e seu dono.
-		return anuncioService.findById(id).orElse(null);
+	public AnuncioDetails getAnuncio(@PathVariable Integer id) {
+		// CWE-200: Exposure of Sensitive Information to an Unauthorized Actor (Corrigida)
+		return anuncioService.findById(id).map(
+				anuncio -> new AnuncioDetails(anuncio.getTitulo(), anuncio.getDescricao(),
+						anuncio.isAtivo(), anuncio.getId())
+		).orElse(null);
 	}
 
 	@PutMapping("/{id}")
